@@ -209,7 +209,7 @@ export function handleTransfer(event: Transfer): void {
 
   transaction.save()
 }
-s
+
 export function handleSync(event: Sync): void {
   let pair = Pair.load(event.address.toHex())
   let token0 = Token.load(pair.token0)

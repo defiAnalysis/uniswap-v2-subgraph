@@ -3,7 +3,7 @@ import { Pair, Token, Bundle } from '../types/schema'
 import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD, UNTRACKED_PAIRS } from './helpers'
 
-const WREI_ADDRESS = '0x2545AF3D8b11e295bB7aEdD5826021AB54F71630'
+const WREI_ADDRESS = '0x2545af3d8b11e295bb7aedd5826021ab54f71630'
 const USDC_WREI_PAIR = '0x7f5ce6bea4fff8b1674fc8160e3c68a17723f3b4' 
 const DAI_WREI_PAIR = '0xce40b9379488de1bd242df8e85225fc42b0f81da' 
 const USDT_WREI_PAIR = '0x0c01a41657b532941958c9e09261946fdf1d1a5f' 
@@ -11,7 +11,7 @@ const USDT_WREI_PAIR = '0x0c01a41657b532941958c9e09261946fdf1d1a5f'
 export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
   let daiPair = Pair.load(DAI_WREI_PAIR) // dai is token0
-  let usdcPair = Pair.load(USDC_WREI_PAIR) // usdc is token0
+  let usdcPair = Pair.load(USDC_WREI_PAIR) // usdc is token1
   let usdtPair = Pair.load(USDT_WREI_PAIR) // usdt is token1
 
   // all 3 have been created
@@ -24,13 +24,11 @@ export function getEthPriceInUSD(): BigDecimal {
       .times(daiWeight)
       .plus(usdcPair.token1Price.times(usdcWeight))
       .plus(usdtPair.token1Price.times(usdtWeight))
-    // dai and USDC have been created
   } else if (daiPair !== null && usdcPair !== null) {
     let totalLiquidityETH = daiPair.reserve1.plus(usdcPair.reserve0)
     let daiWeight = daiPair.reserve1.div(totalLiquidityETH)
     let usdcWeight = usdcPair.reserve0.div(totalLiquidityETH)
     return daiPair.token0Price.times(daiWeight).plus(usdcPair.token1Price.times(usdcWeight))
-    // USDC is the only pair so far
   } else if (usdcPair !== null) {
     return usdcPair.token1Price
   } else if (usdtPair !== null) {
@@ -79,6 +77,7 @@ export function findEthPerToken(token: Token): BigDecimal {
       }
     }
   }
+
   return ZERO_BD // nothing was found return 0
 }
 

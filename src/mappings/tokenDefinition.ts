@@ -24,7 +24,7 @@ export class TokenDefinition {
 
     // Add OORT
     let tokenOORT = new TokenDefinition(
-      Address.fromString('0x3D1BBD0eC9Af25e8f12383d9F6a6bbFa6DfeF06F'),
+      Address.fromString('0x3d1bbd0ec9af25e8f12383d9f6a6bbfa6dfef06f'),
       'OORT',
       'Oort Token',
       BigInt.fromI32(18)

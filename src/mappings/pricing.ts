@@ -40,12 +40,12 @@ export function getEthPriceInUSD(): BigDecimal {
 
 // token where amounts should contribute to tracked volume and liquidity
 let WHITELIST: string[] = [
-  '0x2545AF3D8b11e295bB7aEdD5826021AB54F71630', // WREI
-  '0x0ba85980B122353D77fBb494222a10a46E4FB1f6', // DAI
-  '0x8d5E1225981359E2E09A3AB8F599A51486f53314', // USDC
-  '0x988a631Caf24E14Bb77EE0f5cA881e8B5dcfceC7', // USDT
-  '0x7a5313468c1C1a3Afb2Cf5ec46558A7D0fc2884A', // WETH
-  '0x8059E671Be1e76f8db5155bF4520f86ACfDc5561' // WBTC
+  '0x2545af3d8b11e295bb7aedd5826021ab54f71630', // WREI
+  '0x0ba85980b122353d77fbb494222a10a46e4fb1f6', // DAI
+  '0x8d5e1225981359e2e09a3ab8f599a51486f53314', // USDC
+  '0x988a631caf24e14bb77ee0f5ca881e8b5dcfcec7', // USDT
+  '0x7a5313468c1c1a3afb2cf5ec46558a7d0fc2884a', // WETH
+  '0x8059e671be1e76f8db5155bf4520f86acfdc5561' // WBTC
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
